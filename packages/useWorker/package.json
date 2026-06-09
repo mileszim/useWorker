@@ -1,10 +1,10 @@
 {
-  "name": "@koale/useworker",
+  "name": "@mileszim/useworker",
   "version": "4.1.2",
   "description": "useWorker() - Web worker using React hook",
-  "author": "alewin",
+  "author": "mileszim",
   "license": "MIT",
-  "repository": "alewin/useworker",
+  "repository": "mileszim/useworker",
   "keywords": [
     "react",
     "react-hooks",
@@ -37,8 +37,8 @@
   "peerDependencies": {
     "react": ">=16.8.0 <20.0.0"
   },
-  "homepage": "https://github.com/alewin/useworker",
+  "homepage": "https://github.com/mileszim/useworker",
   "bugs": {
-    "url": "https://github.com/alewin/useworker/issues"
+    "url": "https://github.com/mileszim/useworker/issues"
   }
 }

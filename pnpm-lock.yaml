@@ -17,7 +17,7 @@ importers:
 
   apps/examples:
     dependencies:
-      '@koale/useworker':
+      '@mileszim/useworker':
         specifier: workspace:*
         version: link:../../packages/useWorker
       react:
