@@ -11,16 +11,25 @@
     "changeset": "changeset",
     "check": "biome check",
     "check:fix": "biome check --write",
-    "ci:build": "pnpm run --filter @koale/useworker build",
-    "ci:publish": "pnpm run --filter @koale/useworker build && changeset publish",
+    "ci:build": "pnpm run --filter @mileszim/useworker build",
+    "ci:publish": "pnpm run --filter @mileszim/useworker build && changeset publish",
     "ci:version": "changeset version"
   },
-  "repository": "alewin/useworker",
-  "keywords": ["useWorker", "react", "hooks", "worker", "web worker", "blocking ui", "javscript", "background"],
-  "author": "alewin",
+  "repository": "mileszim/useworker",
+  "keywords": [
+    "useWorker",
+    "react",
+    "hooks",
+    "worker",
+    "web worker",
+    "blocking ui",
+    "javscript",
+    "background"
+  ],
+  "author": "mileszim",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/alewin/useWorker/issues"
+    "url": "https://github.com/mileszim/useWorker/issues"
   },
-  "homepage": "https://github.com/alewin/useWorker#readme"
+  "homepage": "https://github.com/mileszim/useWorker#readme"
 }

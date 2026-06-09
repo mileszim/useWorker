@@ -74,7 +74,7 @@ importers:
         specifier: ^4.3.3
         version: 4.3.3(vite@5.4.12(@types/node@22.8.1)(terser@5.36.0))
       react:
-        specifier: ^18.3.1
+        specifier: ^18.2.0
         version: 18.3.1
       vite:
         specifier: ^5.4.12
