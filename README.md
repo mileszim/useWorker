@@ -9,7 +9,7 @@
 <h2 align="center">
   Use web workers with react hook
   <br />
-  https://useworker.js.org/  
+  https://useworker.js.org/
   <a
     href="https://twitter.com/intent/tweet?text=useWorker - Use web workers with react hooks&url=https://github.com/alewin/useWorker&via=alessiokoci&hashtags=react,useworker,hooks,javascript">
     <br />
@@ -120,7 +120,7 @@ const Example = () => {
 
 [![Edit white-glitter-icji4](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/white-glitter-icji4?fontsize=14&hidenavigation=1&theme=dark)
 
-More examples: https://github.com/alewin/useWorker/tree/develop/example
+More examples: https://github.com/mileszim/useWorker/tree/develop/example
 
 ---
 
@@ -131,10 +131,10 @@ More examples: https://github.com/alewin/useWorker/tree/develop/example
 - [x] Add timeout option
 - [x] Import and use remote script inside `useWorker` function
 - [x] support [Transferable Objects](https://developer.mozilla.org/en-US/docs/Glossary/Transferable_objects)
-- [x] Testing useWorker [#41](https://github.com/alewin/useWorker/issues/41)
-- [x] Import and use local script inside `useWorker` function [#37](https://github.com/alewin/useWorker/issues/37)
-- [ ] useWorkers Hook [#38](https://github.com/alewin/useWorker/issues/38)
-- [ ] useWorkerFile Hook [#93](https://github.com/alewin/useWorker/issues/93)
+- [x] Testing useWorker [#41](https://github.com/mileszim/useWorker/issues/41)
+- [x] Import and use local script inside `useWorker` function [#37](https://github.com/mileszim/useWorker/issues/37)
+- [ ] useWorkers Hook [#38](https://github.com/mileszim/useWorker/issues/38)
+- [ ] useWorkerFile Hook [#93](https://github.com/mileszim/useWorker/issues/93)
 
 ---
 
