@@ -1,8 +1,8 @@
 module.exports = {
   title: 'useWorker',
   tagline: 'Use web workers with react hook',
-  url: 'https://mileszim.github.io/useWorker',
-  baseUrl: '/',
+  url: 'https://mileszim.github.io',
+  baseUrl: '/useWorker',
   favicon: 'img/favicon.ico',
   organizationName: 'mileszim',
   projectName: 'useWorker',
