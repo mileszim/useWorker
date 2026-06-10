@@ -9,13 +9,7 @@
 <h2 align="center">
   Use web workers with react hook
   <br />
-  https://useworker.js.org/
-  <a
-    href="https://twitter.com/intent/tweet?text=useWorker - Use web workers with react hooks&url=https://github.com/alewin/useWorker&via=alessiokoci&hashtags=react,useworker,hooks,javascript">
-    <br />
-    <img alt="Tweet" src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social" />
-  </a>
-
+  https://mileszim.github.io/useWorker/
 </h2>
 
 
@@ -34,11 +28,11 @@
 - Run expensive function **without blocking UI** ([Show live gif](https://github.com/alewin/useWorker/issues/2))
 - Supports **Promises** pattern instead of event-messages
 - Size: less than `3KB`!
-- Clear [API](https://useworker.js.org/docs/api-useworker#options-api) using hook
+- Clear [API](https://mileszim.github.io/useWorker/docs/api-useworker#options-api) using hook
 - Typescript support
 - Garbage collector web worker instance
-- [Remote dependencies](https://useworker.js.org/docs/api-useworker#options-api) option
-- [timeout](https://useworker.js.org/docs/api-useworker#options-api) option
+- [Remote dependencies](https://mileszim.github.io/useWorker/docs/api-useworker#options-api) option
+- [timeout](https://mileszim.github.io/useWorker/docs/api-useworker#options-api) option
 
 ---
 

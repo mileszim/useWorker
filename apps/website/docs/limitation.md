@@ -9,6 +9,10 @@ Before you start using this hook, I suggest you read the [Web Worker](https://de
 
 > Remember that your web worker function `fn` must be a function **without** local dependencies, which **does not** produce side-effects.
 
+:::tip
+Using Vite? The [`@mileszim/useworker-vite`](./vite-plugin.md) plugin lifts the "no local dependencies" restriction — you can split worker code across modules and import npm packages, and it gets bundled into the worker at build time.
+:::
+
 :::warning
 
 - The web worker **don't** have access to the document, and window object

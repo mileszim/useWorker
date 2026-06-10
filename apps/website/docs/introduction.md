@@ -20,12 +20,12 @@ In this way, many features can be run in "**parallel**" without blocking our jav
 - Run expensive function **without blocking UI** ([Show live gif](https://github.com/alewin/useWorker/issues/2))
 - Supports **Promises** pattern instead of event-messages
 - Size: less than `3KB`
-- Clear [API](https://useworker.js.org/docs/api-useworker#options-api) using hook
+- Clear [API](https://mileszim.github.io/useWorker/docs/api-useworker#options-api) using hook
 - Typescript support
 - Garbage collector web worker instance
-- [Remote dependencies](https://useworker.js.org/docs/api-useworker#options-api) option
-- [Timeout](https://useworker.js.org/docs/api-useworker#options-api) option
-- Support [Transferable](https://useworker.js.org/docs/api-useworker#options-api)
+- [Remote dependencies](https://mileszim.github.io/useWorker/docs/api-useworker#options-api) option
+- [Timeout](https://mileszim.github.io/useWorker/docs/api-useworker#options-api) option
+- Support [Transferable](https://mileszim.github.io/useWorker/docs/api-useworker#options-api)
 
 the most useful feature of `useWorker`, however, is the *simplicity*. You can see the difference between using web workers via pure javascript and via `useWorker()`.
 
