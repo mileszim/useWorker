@@ -5,12 +5,12 @@ title: Installation
 
 ## Install
 
-The package is available on [npm](https://www.npmjs.com/package/@koale/useworker)
+The package is available on [npm](https://www.npmjs.com/package/@mileszim/useworker)
 
 - **@latest**
 
 ```bash
-npm install --save @koale/useworker
+npm install --save @mileszim/useworker
 ```
 
 ## Import
@@ -18,7 +18,7 @@ npm install --save @koale/useworker
 To import the package:
 
 ```jsx
-import { useWorker, WORKER_STATUS } from "@koale/useworker";
+import { useWorker, WORKER_STATUS } from "@mileszim/useworker";
 ```
 
 :::tip

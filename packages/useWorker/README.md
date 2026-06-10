@@ -17,9 +17,9 @@
 </h2>
 
 <h3 align="center">
-  <img alt="GitHub" src="https://img.shields.io/npm/dm/@koale/useworker" />
-  <img alt="size" src="https://img.shields.io/bundlephobia/minzip/@koale/useworker/4.0.2" />
-  <img alt="GitHub" src="https://img.shields.io/npm/l/@koale/useworker" />
+  <img alt="GitHub" src="https://img.shields.io/npm/dm/@mileszim/useworker" />
+  <img alt="size" src="https://img.shields.io/bundlephobia/minzip/@mileszim/useworker" />
+  <img alt="GitHub" src="https://img.shields.io/npm/l/@mileszim/useworker" />
  <img src="https://badgen.net/badge/TypeScript/Support" alt="TypeScript Support" title="TypeScript Support" data-canonical-src="https://badgen.net/badge/TypeScript/Support" style="max-width:100%;">
 </h3>
 

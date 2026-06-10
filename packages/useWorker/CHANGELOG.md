@@ -1,4 +1,4 @@
-# @koale/useworker
+# @mileszim/useworker
 
 ## 4.1.2
 
