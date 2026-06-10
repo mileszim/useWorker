@@ -1,5 +1,5 @@
 {
-  "name": "@koale/useworker-website",
+  "name": "@mileszim/useworker-website",
   "version": "2.0.1",
   "private": true,
   "scripts": {
@@ -17,7 +17,11 @@
     "@mdx-js/react": "3.1.1"
   },
   "browserslist": {
-    "production": [">0.2%", "not dead", "not op_mini all"],
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",

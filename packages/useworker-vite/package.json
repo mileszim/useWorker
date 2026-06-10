@@ -1,0 +1,56 @@
+{
+  "name": "@mileszim/useworker-vite",
+  "version": "0.1.0",
+  "description": "Vite plugin for @mileszim/useworker — run worker functions composed from imports across files and npm packages, just like passing a pure function.",
+  "author": "mileszim",
+  "license": "MIT",
+  "repository": "mileszim/useworker",
+  "keywords": [
+    "vite",
+    "vite-plugin",
+    "web worker",
+    "useWorker",
+    "react",
+    "worker"
+  ],
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "test": "node test/e2e.mjs"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "dependencies": {
+    "es-module-lexer": "^1.5.4"
+  },
+  "peerDependencies": {
+    "vite": ">=5"
+  },
+  "devDependencies": {
+    "@mileszim/useworker": "workspace:*",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.2.10",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.1.2",
+    "dequal": "^2.0.3",
+    "puppeteer-core": "^23.11.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "vite": "^7.3.1",
+    "vite-plugin-dts": "^4.5.4"
+  },
+  "homepage": "https://github.com/mileszim/useworker#readme",
+  "bugs": {
+    "url": "https://github.com/mileszim/useworker/issues"
+  }
+}

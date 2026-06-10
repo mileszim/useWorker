@@ -1,0 +1,3 @@
+dist
+test/fixture/dist
+node_modules

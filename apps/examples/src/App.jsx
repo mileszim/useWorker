@@ -1,9 +1,10 @@
 import React from 'react'
 import { Toaster } from 'react-hot-toast'
-import { Link, Route, BrowserRouter as Router, Switch } from 'react-router-dom'
+import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 
 import CsvPage from './pages/Csv/index.jsx'
 import ExternalScriptsPage from './pages/ExternalScripts/index.jsx'
+import ModuleImportsPage from './pages/ModuleImports/index.jsx'
 import SortingPage from './pages/Sorting/index.jsx'
 import TransferablePage from './pages/Transferable'
 import logo from './react.png'
@@ -50,25 +51,23 @@ export default function App() {
                   Transferable Demo
                 </Link>
               </li>
+              <li>
+                <Link style={{ color: 'white' }} to="/module-imports">
+                  Module Imports Demo
+                </Link>
+              </li>
             </ul>
           </header>
           <hr />
         </div>
         <div>
-          <Switch>
-            <Route path="/sorting">
-              <SortingPage />
-            </Route>
-            <Route path="/csv">
-              <CsvPage />
-            </Route>
-            <Route path="/external">
-              <ExternalScriptsPage />
-            </Route>
-            <Route path="/transferable">
-              <TransferablePage />
-            </Route>
-          </Switch>
+          <Routes>
+            <Route path="/sorting" element={<SortingPage />} />
+            <Route path="/csv" element={<CsvPage />} />
+            <Route path="/external" element={<ExternalScriptsPage />} />
+            <Route path="/transferable" element={<TransferablePage />} />
+            <Route path="/module-imports" element={<ModuleImportsPage />} />
+          </Routes>
         </div>
       </Router>
       <Toaster />

@@ -1,5 +1,5 @@
 {
-  "name": "@koale/useworker-examples",
+  "name": "@mileszim/useworker-examples",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,12 +9,14 @@
   },
   "dependencies": {
     "@mileszim/useworker": "workspace:*",
+    "date-fns": "^4.1.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-hot-toast": "^2.6.0",
     "react-router-dom": "^7.13.0"
   },
   "devDependencies": {
+    "@mileszim/useworker-vite": "workspace:*",
     "@vitejs/plugin-react": "^5.1.2",
     "vite": "^7.3.1"
   }

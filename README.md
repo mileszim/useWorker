@@ -9,7 +9,7 @@
 <h2 align="center">
   Use web workers with react hook
   <br />
-  https://useworker.js.org/  
+  https://useworker.js.org/
   <a
     href="https://twitter.com/intent/tweet?text=useWorker - Use web workers with react hooks&url=https://github.com/alewin/useWorker&via=alessiokoci&hashtags=react,useworker,hooks,javascript">
     <br />
@@ -21,9 +21,9 @@
 
 
 <h3 align="center">
-  <img alt="GitHub" src="https://img.shields.io/npm/dm/@koale/useworker" />
-  <img alt="size" src="https://img.shields.io/bundlephobia/minzip/@koale/useworker/2.1.0" />
-  <img alt="GitHub" src="https://img.shields.io/npm/l/@koale/useworker" />
+  <img alt="GitHub" src="https://img.shields.io/npm/dm/@mileszim/useworker" />
+  <img alt="size" src="https://img.shields.io/bundlephobia/minzip/@mileszim/useworker" />
+  <img alt="GitHub" src="https://img.shields.io/npm/l/@mileszim/useworker" />
  <img src="https://badgen.net/npm/types/tslib" alt="TypeScript Support" title="TypeScript Support" data-canonical-src="https://badgen.net/badge/TypeScript/Support" style="max-width:100%;">
 </h3>
 
@@ -42,12 +42,12 @@
 
 ---
 
-## 💾 [Install](https://www.npmjs.com/package/@koale/useworker)
+## 💾 [Install](https://www.npmjs.com/package/@mileszim/useworker)
 
 - **@latest**
 
 ```bash
-npm install --save @koale/useworker
+npm install --save @mileszim/useworker
 ```
 
 ---
@@ -55,7 +55,7 @@ npm install --save @koale/useworker
 ## 🔨 Import
 
 ```jsx
-import { useWorker, WORKER_STATUS } from "@koale/useworker";
+import { useWorker, WORKER_STATUS } from "@mileszim/useworker";
 ```
 
 ---
@@ -79,7 +79,7 @@ import { useWorker, WORKER_STATUS } from "@koale/useworker";
 
 ## ⚙ Web Workers
 
-Before you start using this [hook](https://www.npmjs.com/package/@koale/useworker), I suggest you to read the [Web Worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers) documentation.
+Before you start using this [hook](https://www.npmjs.com/package/@mileszim/useworker), I suggest you to read the [Web Worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers) documentation.
 
 ---
 
@@ -87,7 +87,7 @@ Before you start using this [hook](https://www.npmjs.com/package/@koale/useworke
 
 ```jsx
 import React from "react";
-import { useWorker } from "@koale/useworker";
+import { useWorker } from "@mileszim/useworker";
 
 const numbers = [...Array(5000000)].map((e) => ~~(Math.random() * 1000000));
 const sortNumbers = (nums) => nums.sort();
@@ -110,6 +110,53 @@ const Example = () => {
 
 ---
 
+## 🧩 Functions across multiple files — `@mileszim/useworker-vite`
+
+`useWorker(fn)` moves `fn` into the worker by stringifying it (`fn.toString()`),
+so `fn` must be **self-contained** — it can't reference imports or helpers from
+other modules. To spread your worker logic across multiple files (and even pull
+in npm packages), add the companion Vite plugin
+[`@mileszim/useworker-vite`](packages/useworker-vite#readme):
+
+```bash
+npm install -D @mileszim/useworker-vite
+```
+
+```js
+// vite.config.js
+import { useworkerVite } from "@mileszim/useworker-vite";
+export default defineConfig({ plugins: [react(), useworkerVite()] });
+```
+
+```js
+// analyze.worker.js — composed from several modules + an npm package
+import { format } from "date-fns";
+import { mean, stddev } from "./lib/stats"; // ./lib/stats -> ./lib/math
+
+export const analyze = (xs) => ({
+  mean: mean(xs),
+  stddev: stddev(xs),
+  at: format(new Date(), "HH:mm:ss"),
+});
+```
+
+```jsx
+import { useWorker } from "@mileszim/useworker";
+import { analyze } from "./analyze.worker"; // a *.worker.js module
+
+const [analyzeWorker] = useWorker(analyze); // reads like a pure function
+const result = await analyzeWorker([1, 2, 3]); // runs off the main thread
+```
+
+The plugin compiles each `*.worker.{js,ts,jsx,tsx}` module — and its **entire
+import graph** (local files _and_ npm deps) — into a real module-worker chunk,
+so cross-file and npm imports just work; `useWorker` is unchanged at the call
+site. See the runnable **Module Imports** demo in
+[`apps/examples`](apps/examples) and the
+[plugin README](packages/useworker-vite#readme) for setup and limitations.
+
+---
+
 ## 🖼 Live Demo
 
 <img alt="useworker demo" src="https://user-images.githubusercontent.com/980844/82120716-70151e00-9788-11ea-8f8d-07b06a13dde2.gif" />
@@ -120,7 +167,7 @@ const Example = () => {
 
 [![Edit white-glitter-icji4](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/white-glitter-icji4?fontsize=14&hidenavigation=1&theme=dark)
 
-More examples: https://github.com/alewin/useWorker/tree/develop/example
+More examples: https://github.com/mileszim/useWorker/tree/develop/example
 
 ---
 
@@ -131,10 +178,11 @@ More examples: https://github.com/alewin/useWorker/tree/develop/example
 - [x] Add timeout option
 - [x] Import and use remote script inside `useWorker` function
 - [x] support [Transferable Objects](https://developer.mozilla.org/en-US/docs/Glossary/Transferable_objects)
-- [x] Testing useWorker [#41](https://github.com/alewin/useWorker/issues/41)
-- [x] Import and use local script inside `useWorker` function [#37](https://github.com/alewin/useWorker/issues/37)
-- [ ] useWorkers Hook [#38](https://github.com/alewin/useWorker/issues/38)
-- [ ] useWorkerFile Hook [#93](https://github.com/alewin/useWorker/issues/93)
+- [x] Testing useWorker [#41](https://github.com/mileszim/useWorker/issues/41)
+- [x] Import and use local script inside `useWorker` function [#37](https://github.com/mileszim/useWorker/issues/37)
+- [x] Import functions from multiple files / npm packages via `@mileszim/useworker-vite`
+- [ ] useWorkers Hook [#38](https://github.com/mileszim/useWorker/issues/38)
+- [ ] useWorkerFile Hook [#93](https://github.com/mileszim/useWorker/issues/93)
 
 ---
 
@@ -160,6 +208,11 @@ If you're experimenting this type of issue, one workaround is wrapping your func
 ```js
 const sum = new Function(`a`, `b`, `return a + b`);
 ```
+
+For a robust solution that lets you split worker code across modules (and import
+npm packages) without these `toString()` scoping pitfalls, use the
+[`@mileszim/useworker-vite`](packages/useworker-vite#readme) plugin described
+above.
 
 ---
 

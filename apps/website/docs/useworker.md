@@ -6,7 +6,7 @@ title: useWorker()
 ## Import
 
 ```javascript
-import { useWorker } from "@koale/useworker";
+import { useWorker } from "@mileszim/useworker";
 ```
 
 ## Usage
@@ -49,7 +49,7 @@ to view the values of `WORKER_STATUS` click here: [Status API](./workerstatus.md
 ## Options Example
 
 ```javascript
-import { useWorker } from "@koale/useworker";
+import { useWorker } from "@mileszim/useworker";
 
 const fn = dates => dates.sort(dateFns.compareAsc)
 
@@ -60,14 +60,14 @@ const [workerFn, {status: workerStatus, kill: workerTerminate }] = useWorker(fn,
   ],
 });
 ```
-<!-- 
+<!--
 ## Local Dependencies Example
 
 ```javascript
-import { useWorker } from "@koale/useworker";
+import { useWorker } from "@mileszim/useworker";
 import { expensiveAdder } from './utils'
 
-const fn = (a, b) => expensiveAdder(a,b) 
+const fn = (a, b) => expensiveAdder(a,b)
 
 const [workerFn, {status: workerStatus, kill: workerTerminate }] = useWorker(fn, {
   timeout: 50000 // 5 seconds
