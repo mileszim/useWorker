@@ -1,4 +1,4 @@
-import { useWorker, WORKER_STATUS } from '@koale/useworker'
+import { useWorker, WORKER_STATUS } from '@mileszim/useworker'
 import React from 'react'
 import toast from 'react-hot-toast'
 

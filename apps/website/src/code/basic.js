@@ -1,6 +1,6 @@
 export default `
 import React from "react";
-import { useWorker, WORKER_STATUS } from "@koale/useworker";
+import { useWorker, WORKER_STATUS } from "@mileszim/useworker";
 
 const numbers = [...Array(5000000)].map(e => ~~(Math.random() * 1000000));
 const sortNumbers = nums => nums.sort();

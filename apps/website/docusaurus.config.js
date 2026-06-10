@@ -1,10 +1,10 @@
 module.exports = {
   title: 'useWorker',
   tagline: 'Use web workers with react hook',
-  url: 'https://useworker.netlify.com/',
+  url: 'https://mileszim.github.io/useWorker',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
-  organizationName: 'alewin',
+  organizationName: 'mileszim',
   projectName: 'useWorker',
   themeConfig: {
     navbar: {
@@ -21,7 +21,7 @@ module.exports = {
           position: 'left',
         },
         {
-          href: 'https://github.com/alewin/useWorker',
+          href: 'https://github.com/mileszim/useWorker',
           label: 'GitHub',
           position: 'right',
         },
@@ -60,7 +60,7 @@ module.exports = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/alewin/useworker',
+              href: 'https://github.com/mileszim/useworker',
             },
           ],
         },
@@ -76,13 +76,9 @@ module.exports = {
     [
       '@docusaurus/preset-classic',
       {
-        gtag: {
-          trackingID: 'G-QH6C23CWJR',
-          anonymizeIP: true,
-        },
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/alewin/useworker/edit/master/website/',
+          editUrl: 'https://github.com/mileszim/useworker/edit/master/website/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

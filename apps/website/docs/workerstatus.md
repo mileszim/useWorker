@@ -6,7 +6,7 @@ title: WORKER_STATUS
 ## Import
 
 ```jsx
-import { WORKER_STATUS } from "@koale/useworker";
+import { WORKER_STATUS } from "@mileszim/useworker";
 ```
 
 ## API

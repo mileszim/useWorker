@@ -3,6 +3,7 @@ import { useDeepCallback } from './hook/useDeepCallback'
 import { AbortError } from './lib/abortError'
 import createWorkerBlobUrl from './lib/createWorkerBlobUrl'
 import WORKER_STATUS from './lib/status'
+import { getWorkerModuleRef, UW_MSG } from './lib/workerModule'
 
 type WorkerController = {
   status: WORKER_STATUS
@@ -42,22 +43,27 @@ export const useWorker = <T extends (...fnArgs: any[]) => any>(
   const [workerStatus, setWorkerStatus] = React.useState<WORKER_STATUS>(
     WORKER_STATUS.PENDING,
   )
-  const worker = React.useRef<Worker & { _url?: string }>()
+  const worker = React.useRef<(Worker & { _url?: string }) | undefined>(
+    undefined,
+  )
   const isRunning = React.useRef(false)
   const promise = React.useRef<{
     [PROMISE_REJECT]?: (result: ReturnType<T> | ErrorEvent | AbortError) => void
     [PROMISE_RESOLVE]?: (result: ReturnType<T>) => void
   }>({})
-  const timeoutId = React.useRef<number>()
+  const timeoutId = React.useRef<number | undefined>(undefined)
+  const callId = React.useRef(0)
 
   const killWorker = React.useCallback(() => {
-    if (worker.current?._url) {
-      if (promise.current) {
-        promise.current[PROMISE_REJECT]?.(new AbortError())
-      }
+    if (worker.current) {
+      promise.current[PROMISE_REJECT]?.(new AbortError())
 
       worker.current.terminate()
-      URL.revokeObjectURL(worker.current._url)
+      // Blob workers (the fn.toString() path) carry a `_url` to revoke; module
+      // workers built by the useworker-vite plugin do not.
+      if (worker.current._url) {
+        URL.revokeObjectURL(worker.current._url)
+      }
       promise.current = {}
       worker.current = undefined
       isRunning.current = false
@@ -88,11 +94,41 @@ export const useWorker = <T extends (...fnArgs: any[]) => any>(
       transferable = DEFAULT_OPTIONS.transferable,
     } = options
 
-    const blobUrl = createWorkerBlobUrl(fn, remoteDependencies!, transferable!)
-    const newWorker: Worker & { _url?: string } = new Worker(blobUrl, { type: 'module' })
-    newWorker._url = blobUrl
+    const moduleRef = getWorkerModuleRef(fn)
+    let newWorker: Worker & { _url?: string }
+
+    if (moduleRef) {
+      // Module path: a fully-bundled module worker built by useworker-vite.
+      // No blob / `fn.toString()`, so the worker can use cross-file and npm
+      // imports just like any other module.
+      newWorker = moduleRef.factory()
+    } else {
+      // Blob path: must be a *classic* worker. The generated blob uses
+      // `importScripts(...)` for `remoteDependencies`, which throws in module
+      // workers ("Module scripts don't support importScripts()").
+      const blobUrl = createWorkerBlobUrl(
+        fn,
+        remoteDependencies!,
+        transferable!,
+      )
+      newWorker = new Worker(blobUrl)
+      newWorker._url = blobUrl
+    }
 
     newWorker.onmessage = (e: MessageEvent) => {
+      // Module path envelope: { __uw, id, ok, result | error }
+      if (e.data?.[UW_MSG]) {
+        if (e.data.ok) {
+          promise.current[PROMISE_RESOLVE]?.(e.data.result)
+          onWorkerEnd(WORKER_STATUS.SUCCESS)
+        } else {
+          promise.current[PROMISE_REJECT]?.(e.data.error)
+          onWorkerEnd(WORKER_STATUS.ERROR)
+        }
+        return
+      }
+
+      // Blob path envelope: [status, result]
       const [status, result] = e.data as [WORKER_STATUS, ReturnType<T>]
 
       switch (status) {
@@ -142,7 +178,21 @@ export const useWorker = <T extends (...fnArgs: any[]) => any>(
               )
             : []
 
-        worker.current?.postMessage([[...workerArgs]], transferList)
+        const moduleRef = getWorkerModuleRef(fn)
+        if (moduleRef) {
+          callId.current += 1
+          worker.current?.postMessage(
+            {
+              [UW_MSG]: 1,
+              id: callId.current,
+              name: moduleRef.name,
+              args: [...workerArgs],
+            },
+            transferList,
+          )
+        } else {
+          worker.current?.postMessage([[...workerArgs]], transferList)
+        }
 
         setWorkerStatus(WORKER_STATUS.RUNNING)
       })
