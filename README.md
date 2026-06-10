@@ -118,8 +118,8 @@ npm install -D @mileszim/useworker-vite
 
 ```js
 // vite.config.js
-import { useworkerVite } from "@mileszim/useworker-vite";
-export default defineConfig({ plugins: [react(), useworkerVite()] });
+import { useWorkerVite } from "@mileszim/useworker-vite";
+export default defineConfig({ plugins: [react(), useWorkerVite()] });
 ```
 
 ```js

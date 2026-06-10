@@ -11,8 +11,10 @@
     "changeset": "changeset",
     "check": "biome check",
     "check:fix": "biome check --write",
-    "ci:build": "pnpm run --filter @mileszim/useworker build",
-    "ci:publish": "pnpm run --filter @mileszim/useworker build && changeset publish",
+    "ci:build:package": "pnpm run --filter @mileszim/useworker build",
+    "ci:build:plugin": "pnpm run --filter @mileszim/useworker-vite build",
+    "ci:build": "pnpm run ci:build:package && pnpm run ci:build:plugin",
+    "ci:publish": "pnpm run ci:build && changeset publish",
     "ci:version": "changeset version"
   },
   "repository": "mileszim/useworker",
@@ -23,7 +25,7 @@
     "worker",
     "web worker",
     "blocking ui",
-    "javscript",
+    "javascript",
     "background"
   ],
   "author": "mileszim",

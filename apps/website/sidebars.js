@@ -1,6 +1,6 @@
 module.exports = {
   someSidebar: {
-    'Getting Start': ['introduction', 'installation', 'usage', 'vite-plugin'],
+    'Getting Started': ['introduction', 'installation', 'usage', 'vite-plugin'],
     API: ['api-useworker', 'api-workerstatus'],
     Examples: [
       'examples/examples-sort',
@@ -8,6 +8,6 @@ module.exports = {
       'examples/examples-external',
       'examples/examples-module-imports',
     ],
-    Limitation: ['limitations'],
+    Limitations: ['limitations'],
   },
 }
