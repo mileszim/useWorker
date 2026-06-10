@@ -1,6 +1,6 @@
 {
   "name": "@mileszim/useworker",
-  "version": "4.1.2",
+  "version": "4.2.0",
   "description": "useWorker() - Web worker using React hook",
   "author": "mileszim",
   "license": "MIT",
